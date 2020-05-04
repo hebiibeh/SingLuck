@@ -7,11 +7,9 @@ import android.widget.ArrayAdapter
 import io.realm.Realm
 import io.realm.Sort
 import io.realm.kotlin.where
-import kotlinx.android.synthetic.main.activity_sing_main.*
-import kotlinx.android.synthetic.main.activity_sing_main.topMenuBtn
 import kotlinx.android.synthetic.main.activity_song_main.*
 
-class SongMainActivity : AppCompatActivity() {
+class PlaySoundActivity : AppCompatActivity() {
 
     private lateinit var realm: Realm
 
@@ -20,14 +18,18 @@ class SongMainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_song_main)
 
         realm = Realm.getDefaultInstance()
+
         initBtn()
-        displaySoundFileName()
+        setSoundFileList()
     }
 
-    private fun displaySoundFileName() {
-        val realmResults = realm.where<RecordSoundData>().findAll().sort("soundId", Sort.DESCENDING)
+    private fun setSoundFileList() {
+
+        // 登録済みの曲リストを全件取得
+        val realmResults = realm.where<RecSoundData>().findAll().sort("soundId", Sort.DESCENDING)
         var soundIdArray: Array<String?> = arrayOfNulls(realmResults.size)
 
+        // 画面のコンボボックスに表示するため、曲リストの取得結果からsoundIdを取得
         for (i in 0 until realmResults.size) {
             soundIdArray[i] = realmResults[i]?.soundId.toString()
         }
@@ -38,17 +40,16 @@ class SongMainActivity : AppCompatActivity() {
     }
 
     private fun initBtn() {
-        topMenuBtn.setOnClickListener {
+        goTopMenuBtn.setOnClickListener {
             val intent = Intent(this, TopMenuActivity::class.java)
             intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
             startActivity(intent)
         }
         singMainBtn.setOnClickListener {
-            val intent = Intent(this, SingMainActivity::class.java)
+            val intent = Intent(this, RecSoundActivity::class.java)
             intent.flags = Intent.FLAG_ACTIVITY_REORDER_TO_FRONT
             startActivity(intent)
         }
-
         playSoundBtn.setOnClickListener {
             val intent = Intent(this, PlaySoundService::class.java)
             intent.putExtra("selectedSoundId", songList.selectedItem.toString())

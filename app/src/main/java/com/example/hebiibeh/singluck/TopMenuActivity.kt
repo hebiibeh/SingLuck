@@ -15,12 +15,12 @@ class TopMenuActivity : AppCompatActivity() {
     }
 
     private fun initBtn() {
-        singBtn.setOnClickListener {
-            val intent = Intent(this, SingMainActivity::class.java)
+        goRecSoundBtn.setOnClickListener {
+            val intent = Intent(this, RecSoundActivity::class.java)
             startActivity(intent)
         }
-        songBtn.setOnClickListener {
-            val intent = Intent(this, SongMainActivity::class.java)
+        goPlaySoundBtn.setOnClickListener {
+            val intent = Intent(this, PlaySoundActivity::class.java)
             startActivity(intent)
         }
     }

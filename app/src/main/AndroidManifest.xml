@@ -22,8 +22,8 @@
             android:enabled="true"
             android:exported="true" />
 
-        <activity android:name=".SongMainActivity" />
-        <activity android:name=".SingMainActivity" />
+        <activity android:name=".PlaySoundActivity" />
+        <activity android:name=".RecSoundActivity" />
         <activity android:name=".TopMenuActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

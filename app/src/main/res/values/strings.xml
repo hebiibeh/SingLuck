@@ -1,11 +1,11 @@
 <resources>
     <string name="app_name">SingLuck</string>
     <string name="top_tile_txt">Sing Luck!</string>
-    <string name="sing_btn_txt">Sing</string>
-    <string name="song_main_btn_txt">Song</string>
+    <string name="go_rec_sound_btn_txt">Sing</string>
+    <string name="go_play_sound_btn_txt">Song</string>
     <string name="song_title_text">Song!</string>
-    <string name="sing_title_text">Sing!</string>
-    <string name="top_menu_btn_txt">Top</string>
+    <string name="rec_sound_title_text">Sing!</string>
+    <string name="go_top_menu_btn_txt">Top</string>
     <string name="sing_main_btn_txt">sing</string>
     <string name="play_sound_btn_txt">play</string>
     <string name="rec_sound_btn_txt">record</string>

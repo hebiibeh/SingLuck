@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SongMainActivity">
+    tools:context=".PlaySoundActivity">
 
     <TextView
         android:id="@+id/songTitleText"
@@ -18,12 +18,12 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/topMenuBtn"
+        android:id="@+id/goTopMenuBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="80dp"
         android:layout_marginTop="80dp"
-        android:text="@string/top_menu_btn_txt"
+        android:text="@string/go_top_menu_btn_txt"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/songTitleText" />
@@ -37,7 +37,7 @@
         android:text="@string/sing_main_btn_txt"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/topMenuBtn" />
+        app:layout_constraintTop_toTopOf="@+id/goTopMenuBtn" />
 
     <Button
         android:id="@+id/playSoundBtn"
