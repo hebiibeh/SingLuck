@@ -27,15 +27,15 @@ class PlaySoundActivity : AppCompatActivity() {
 
         // 登録済みの曲リストを全件取得
         val realmResults = realm.where<RecSoundData>().findAll().sort("soundId", Sort.DESCENDING)
-        var soundIdArray: Array<String?> = arrayOfNulls(realmResults.size)
+        var soundFileNameArray: Array<String?> = arrayOfNulls(realmResults.size)
 
         // 画面のコンボボックスに表示するため、曲リストの取得結果からsoundIdを取得
         for (i in 0 until realmResults.size) {
-            soundIdArray[i] = realmResults[i]?.soundId.toString()
+            soundFileNameArray[i] = realmResults[i]?.fileName.toString()
         }
 
         val adapter =
-            ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, soundIdArray)
+            ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, soundFileNameArray)
         songList.adapter = adapter
     }
 
@@ -52,7 +52,7 @@ class PlaySoundActivity : AppCompatActivity() {
         }
         playSoundBtn.setOnClickListener {
             val intent = Intent(this, PlaySoundService::class.java)
-            intent.putExtra("selectedSoundId", songList.selectedItem.toString())
+            intent.putExtra("selectedSoundFileName", songList.selectedItem.toString())
             startService(intent)
         }
     }

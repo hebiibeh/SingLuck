@@ -20,9 +20,9 @@ class PlaySoundService : Service() {
     }
 
     private fun playSound(intent: Intent?) {
-        val selectedSoundId = intent?.getStringExtra("selectedSoundId")
+        val selectedSoundFileName = intent?.getStringExtra("selectedSoundFileName")
         val selectedSoundUri: Uri =
-            Uri.parse(this.filesDir.toString() + Constants.recFileName + selectedSoundId + Constants.soundFileExtension)
+            Uri.parse(this.filesDir.toString() + "/" + selectedSoundFileName)
 
         mp = MediaPlayer.create(this, selectedSoundUri)
         mp?.start()

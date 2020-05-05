@@ -9,4 +9,8 @@
     <string name="sing_main_btn_txt">sing</string>
     <string name="play_sound_btn_txt">play</string>
     <string name="rec_sound_btn_txt">record</string>
+    <string name="rec_stop_btn_txt">stop</string>
+    <string name="rec_save_confirm_txt">保存しますか？</string>
+    <string name="dialog_btn_ok">OK</string>
+    <string name="dialog_btn_cancel">Cancel</string>
 </resources>

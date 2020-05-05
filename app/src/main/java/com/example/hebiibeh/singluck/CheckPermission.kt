@@ -31,11 +31,13 @@ class CheckPermission(_activity: Activity, _permissionList: List<String>) {
             }
         }
 
-        ActivityCompat.requestPermissions(
-            activity,
-            requestPermissionList.toTypedArray(),
-            requestCode
-        )
+        if (!requestPermissionList.isNullOrEmpty()) {
+            ActivityCompat.requestPermissions(
+                activity,
+                requestPermissionList.toTypedArray(),
+                requestCode
+            )
+        }
     }
 
     // TODO:許可を求め、拒否されたいた場合にさらにもう一度拒否（今後ダイアログを表示しない）するとアプリが起動できなくなる→再インストールしてください

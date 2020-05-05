@@ -18,6 +18,10 @@ class RecSoundService : Service() {
     private var recFileName = ""
     private var nextSoundId = 0L
 
+    fun getNextSoundId(): Long {
+        return nextSoundId
+    }
+
     override fun onCreate() {
         super.onCreate()
 
@@ -26,7 +30,6 @@ class RecSoundService : Service() {
         createFileName()
 
         startRecording()
-        registerRecordSoundData()
     }
 
     private fun registerRecordSoundData() {
@@ -70,6 +73,7 @@ class RecSoundService : Service() {
             stop()
             release()
         }
+        registerRecordSoundData()
     }
 
     private fun createNextSoundId() {
@@ -80,6 +84,6 @@ class RecSoundService : Service() {
     private fun createFileName() {
         createNextSoundId()
         recFileName =
-            this.filesDir.toString() + Constants.recFileName + nextSoundId + Constants.soundFileExtension
+            this.filesDir.toString() +"/" + Constants.recFileName + nextSoundId + Constants.soundFileExtension
     }
 }
