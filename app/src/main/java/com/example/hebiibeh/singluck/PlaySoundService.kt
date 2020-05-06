@@ -9,6 +9,7 @@ import android.os.IBinder
 class PlaySoundService : Service() {
 
     private var mp: MediaPlayer? = null
+    private val utils = SingLuckCommonUtils(this)
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
         playSound(intent)
@@ -20,9 +21,9 @@ class PlaySoundService : Service() {
     }
 
     private fun playSound(intent: Intent?) {
-        val selectedSoundFileName = intent?.getStringExtra("selectedSoundFileName")
+        val selectedSoundName = intent?.getStringExtra("selectedSoundName")
         val selectedSoundUri: Uri =
-            Uri.parse(this.filesDir.toString() + "/" + selectedSoundFileName)
+            Uri.parse(utils.generateRecFilePath(selectedSoundName))
 
         mp = MediaPlayer.create(this, selectedSoundUri)
         mp?.start()

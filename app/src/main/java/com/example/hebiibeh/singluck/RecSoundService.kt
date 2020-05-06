@@ -15,31 +15,22 @@ class RecSoundService : Service() {
 
     private var mediaRecorder: MediaRecorder? = null
     private lateinit var realm: Realm
-    private var recFileName = ""
-    private var nextSoundId = 0L
-
-    fun getNextSoundId(): Long {
-        return nextSoundId
-    }
+    private val utils = SingLuckCommonUtils(this)
 
     override fun onCreate() {
         super.onCreate()
 
         realm = Realm.getDefaultInstance()
-
-        createFileName()
-
-        startRecording()
     }
 
-    private fun registerRecordSoundData() {
-        realm.executeTransaction {
-            val recordSoundData = realm.createObject<RecSoundData>(nextSoundId)
-            recordSoundData.fileName = recFileName
-            recordSoundData.displayName = recFileName
-            recordSoundData.createDate = Date()
-            recordSoundData.updateDate = Date()
-        }
+    override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
+
+        // nextSoundIdがnullになることはないため、第２引数の"0"に意味はない
+        val nextSoundId = intent?.getLongExtra("nextSoundId", 0)
+        startRecording(nextSoundId)
+        registerRecordSoundData(nextSoundId)
+
+        return super.onStartCommand(intent, flags, startId)
     }
 
     override fun onDestroy() {
@@ -52,11 +43,11 @@ class RecSoundService : Service() {
         return null
     }
 
-    private fun startRecording() {
+    private fun startRecording(nextSoundId: Long?) {
         mediaRecorder = MediaRecorder().apply {
             setAudioSource(MediaRecorder.AudioSource.MIC)
             setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP)
-            setOutputFile(recFileName)
+            setOutputFile(utils.generateDefaultRecFilePath(nextSoundId))
             setAudioEncoder(MediaRecorder.AudioEncoder.AMR_NB)
 
             try {
@@ -68,22 +59,21 @@ class RecSoundService : Service() {
         }
     }
 
+    private fun registerRecordSoundData(nextSoundId: Long?) {
+        realm.executeTransaction {
+            val recordSoundData = realm.createObject<RecSoundData>(nextSoundId)
+            recordSoundData.fileName = utils.generateDefaultRecFileName(nextSoundId)
+            recordSoundData.fileNameNoExtension =
+                utils.generateDefaultRecFileNameNoExtension(nextSoundId)
+            recordSoundData.createDate = Date()
+            recordSoundData.updateDate = Date()
+        }
+    }
+
     private fun stopRecording() {
         mediaRecorder?.apply {
             stop()
             release()
         }
-        registerRecordSoundData()
-    }
-
-    private fun createNextSoundId() {
-        nextSoundId =
-            (realm.where<RecSoundData>().max("soundId")?.toLong() ?: 0L) + 1L
-    }
-
-    private fun createFileName() {
-        createNextSoundId()
-        recFileName =
-            this.filesDir.toString() +"/" + Constants.recFileName + nextSoundId + Constants.soundFileExtension
     }
 }

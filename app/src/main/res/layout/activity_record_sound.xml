@@ -4,13 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".PlaySoundActivity">
+    tools:context=".RecSoundActivity">
 
     <TextView
-        android:id="@+id/songTitleText"
+        android:id="@+id/recSoundTitleTxt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/song_title_text"
+        android:text="@string/rec_sound_title"
         android:textSize="36sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -23,42 +23,38 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="80dp"
         android:layout_marginTop="80dp"
-        android:text="@string/go_top_menu_btn_txt"
+        android:text="@string/go_top_menu_btn"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/songTitleText" />
-
+        app:layout_constraintTop_toBottomOf="@+id/recSoundTitleTxt" />
 
     <Button
-        android:id="@+id/singMainBtn"
+        android:id="@+id/goPlaySoundBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="80dp"
-        android:text="@string/sing_main_btn_txt"
+        android:text="@string/go_play_sound_btn"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/recSoundTitleTxt"
         app:layout_constraintTop_toTopOf="@+id/goTopMenuBtn" />
 
     <Button
-        android:id="@+id/playSoundBtn"
+        android:id="@+id/recSoundBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/play_sound_btn_txt"
+        android:text="@string/rec_sound_btn"
         android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/songTitleText"
+        app:layout_constraintBottom_toTopOf="@+id/recSoundTitleTxt"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Spinner
-        android:id="@+id/songList"
-        android:layout_width="wrap_content"
+    <EditText
+        android:id="@+id/enterFileNameTxt"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/playSoundBtn"
+        app:layout_constraintBottom_toTopOf="@+id/recSoundBtn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

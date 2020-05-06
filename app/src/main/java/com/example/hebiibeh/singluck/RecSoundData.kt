@@ -5,10 +5,12 @@ import io.realm.annotations.PrimaryKey
 import java.util.Date
 
 open class RecSoundData : RealmObject() {
+
     @PrimaryKey
     var soundId: Long = 0
+
     var fileName: String = ""
-    var displayName: String = ""
+    var fileNameNoExtension: String = ""
     var createDate: Date = Date()
     var updateDate: Date = Date()
 }

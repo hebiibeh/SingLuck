@@ -1,16 +1,16 @@
 <resources>
     <string name="app_name">SingLuck</string>
-    <string name="top_tile_txt">Sing Luck!</string>
-    <string name="go_rec_sound_btn_txt">Sing</string>
-    <string name="go_play_sound_btn_txt">Song</string>
-    <string name="song_title_text">Song!</string>
-    <string name="rec_sound_title_text">Sing!</string>
-    <string name="go_top_menu_btn_txt">Top</string>
-    <string name="sing_main_btn_txt">sing</string>
-    <string name="play_sound_btn_txt">play</string>
-    <string name="rec_sound_btn_txt">record</string>
-    <string name="rec_stop_btn_txt">stop</string>
-    <string name="rec_save_confirm_txt">保存しますか？</string>
-    <string name="dialog_btn_ok">OK</string>
-    <string name="dialog_btn_cancel">Cancel</string>
+    <string name="top_tile">Sing Luck!</string>
+    <string name="go_rec_sound_btn">Sing</string>
+    <string name="go_play_sound_btn">Song</string>
+    <string name="play_sound_title">Song!</string>
+    <string name="rec_sound_title">Sing!</string>
+    <string name="go_top_menu_btn">Top</string>
+    <string name="go_record_sound_btn">sing</string>
+    <string name="play_sound_btn">play</string>
+    <string name="rec_sound_btn">record</string>
+    <string name="rec_stop_btn">stop</string>
+    <string name="save_confirm">保存しますか？</string>
+    <string name="positive_save_btn">OK</string>
+    <string name="negative_save_btn">Cancel</string>
 </resources>
