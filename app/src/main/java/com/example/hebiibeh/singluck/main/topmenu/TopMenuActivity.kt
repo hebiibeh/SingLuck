@@ -1,10 +1,14 @@
-package com.example.hebiibeh.singluck
+package com.example.hebiibeh.singluck.main.topmenu
 
 import android.Manifest
 import android.content.Intent
 import android.content.pm.PackageManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.hebiibeh.singluck.R
+import com.example.hebiibeh.singluck.common.CheckPermission
+import com.example.hebiibeh.singluck.main.searchsound.SearchSoundActivity
+import com.example.hebiibeh.singluck.main.recsound.RecSoundActivity
 import kotlinx.android.synthetic.main.activity_top_menu.*
 
 class TopMenuActivity : AppCompatActivity() {
@@ -16,7 +20,10 @@ class TopMenuActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_top_menu)
 
-        val cp = CheckPermission(this, permissionList)
+        val cp = CheckPermission(
+            this,
+            permissionList
+        )
         cp.checkAndRequestPermission()
         initBtn()
     }
@@ -39,8 +46,8 @@ class TopMenuActivity : AppCompatActivity() {
             val intent = Intent(this, RecSoundActivity::class.java)
             startActivity(intent)
         }
-        goPlaySoundBtn.setOnClickListener {
-            val intent = Intent(this, PlaySoundActivity::class.java)
+        goSearchSoundBtn.setOnClickListener {
+            val intent = Intent(this, SearchSoundActivity::class.java)
             startActivity(intent)
         }
     }

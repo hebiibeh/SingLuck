@@ -1,4 +1,4 @@
-package com.example.hebiibeh.singluck
+package com.example.hebiibeh.singluck.model
 
 import io.realm.RealmObject
 import io.realm.annotations.PrimaryKey

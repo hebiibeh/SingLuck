@@ -1,4 +1,4 @@
-package com.example.hebiibeh.singluck
+package com.example.hebiibeh.singluck.common
 
 class Constants {
     companion object {

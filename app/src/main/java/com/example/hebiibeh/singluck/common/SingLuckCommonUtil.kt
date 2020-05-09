@@ -1,9 +1,9 @@
-package com.example.hebiibeh.singluck
+package com.example.hebiibeh.singluck.common
 
 import android.content.Context
 
 
-class SingLuckCommonUtils(_context: Context) {
+class SingLuckCommonUtil(_context: Context) {
 
     private val context = _context
 

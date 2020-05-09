@@ -1,8 +1,12 @@
-package com.example.hebiibeh.singluck
+package com.example.hebiibeh.singluck.main.recsound
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.hebiibeh.singluck.R
+import com.example.hebiibeh.singluck.main.topmenu.TopMenuActivity
+import com.example.hebiibeh.singluck.main.searchsound.SearchSoundActivity
+import com.example.hebiibeh.singluck.model.RecSoundData
 import io.realm.Realm
 import io.realm.kotlin.where
 import kotlinx.android.synthetic.main.activity_record_sound.*
@@ -29,8 +33,8 @@ class RecSoundActivity : AppCompatActivity() {
             intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
             startActivity(intent)
         }
-        goPlaySoundBtn.setOnClickListener {
-            val intent = Intent(this, PlaySoundActivity::class.java)
+        goSearchSoundBtn.setOnClickListener {
+            val intent = Intent(this, SearchSoundActivity::class.java)
             intent.flags = Intent.FLAG_ACTIVITY_REORDER_TO_FRONT
             startActivity(intent)
         }
@@ -42,7 +46,8 @@ class RecSoundActivity : AppCompatActivity() {
                 true -> {
                     stopService(intent)
                     recSoundBtn.text = resources.getString(R.string.rec_sound_btn)
-                    val recSaveConfirmDialog = SaveSoundConfirmDialogFragment()
+                    val recSaveConfirmDialog =
+                        SaveSoundConfirmDialogFragment()
                     recSaveConfirmDialog.setTargetSoundId(nextSoundId)
                     recSaveConfirmDialog.show(supportFragmentManager, "sample")
                 }

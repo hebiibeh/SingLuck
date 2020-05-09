@@ -1,4 +1,4 @@
-package com.example.hebiibeh.singluck
+package com.example.hebiibeh.singluck.common
 
 import android.app.Application
 import android.content.Context

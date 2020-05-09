@@ -1,13 +1,14 @@
-package com.example.hebiibeh.singluck
+package com.example.hebiibeh.singluck.main.recsound
 
 import android.app.Service
 import android.content.Intent
 import android.media.MediaRecorder
 import android.os.IBinder
 import android.util.Log
+import com.example.hebiibeh.singluck.common.SingLuckCommonUtil
+import com.example.hebiibeh.singluck.model.RecSoundData
 import io.realm.Realm
 import io.realm.kotlin.createObject
-import io.realm.kotlin.where
 import java.io.IOException
 import java.util.*
 
@@ -15,7 +16,8 @@ class RecSoundService : Service() {
 
     private var mediaRecorder: MediaRecorder? = null
     private lateinit var realm: Realm
-    private val utils = SingLuckCommonUtils(this)
+    private val utils =
+        SingLuckCommonUtil(this)
 
     override fun onCreate() {
         super.onCreate()
@@ -25,7 +27,7 @@ class RecSoundService : Service() {
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
 
-        // nextSoundIdがnullになることはないため、第２引数の"0"に意味はない
+        // nextSoundIdがnullになることはないため、第２引数のデフォルト値"0"に意味はない
         val nextSoundId = intent?.getLongExtra("nextSoundId", 0)
         startRecording(nextSoundId)
         registerRecordSoundData(nextSoundId)

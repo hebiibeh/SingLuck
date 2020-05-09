@@ -1,17 +1,21 @@
-package com.example.hebiibeh.singluck
+package com.example.hebiibeh.singluck.main.recsound
 
 import android.app.AlertDialog
 import android.app.Dialog
 import android.os.Bundle
 import android.widget.EditText
 import androidx.fragment.app.DialogFragment
+import com.example.hebiibeh.singluck.R
+import com.example.hebiibeh.singluck.common.Constants
+import com.example.hebiibeh.singluck.common.SingLuckCommonUtil
+import com.example.hebiibeh.singluck.model.RecSoundData
 import io.realm.Realm
 import io.realm.kotlin.where
 import java.io.File
 
 class SaveSoundConfirmDialogFragment : DialogFragment() {
 
-    private lateinit var utils: SingLuckCommonUtils
+    private lateinit var utils: SingLuckCommonUtil
     private lateinit var realm: Realm
     private var targetSoundId = 0L
 
@@ -21,7 +25,8 @@ class SaveSoundConfirmDialogFragment : DialogFragment() {
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         realm = Realm.getDefaultInstance()
-        utils = SingLuckCommonUtils(this.requireContext())
+        utils =
+            SingLuckCommonUtil(this.requireContext())
 
         val builder = AlertDialog.Builder(activity)
         // TODO:ファイル名入力時の入力制限、入力チェックが必要

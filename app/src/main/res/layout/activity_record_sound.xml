@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".RecSoundActivity">
+    tools:context=".main.recsound.RecSoundActivity">
 
     <TextView
         android:id="@+id/recSoundTitleTxt"
@@ -29,11 +29,11 @@
         app:layout_constraintTop_toBottomOf="@+id/recSoundTitleTxt" />
 
     <Button
-        android:id="@+id/goPlaySoundBtn"
+        android:id="@+id/goSearchSoundBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="80dp"
-        android:text="@string/go_play_sound_btn"
+        android:text="@string/go_search_sound_btn"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/recSoundTitleTxt"

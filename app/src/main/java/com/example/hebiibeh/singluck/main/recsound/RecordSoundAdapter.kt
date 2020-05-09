@@ -1,10 +1,11 @@
-package com.example.hebiibeh.singluck
+package com.example.hebiibeh.singluck.main.recsound
 
 import android.content.Context
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.TextView
+import com.example.hebiibeh.singluck.model.RecSoundData
 
 class RecordSoundAdapter(
     context: Context,
