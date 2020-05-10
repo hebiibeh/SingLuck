@@ -5,7 +5,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.sound_list_result.view.*
 
-class SounListViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+class SoundListViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
     var soundName: TextView? = null
 

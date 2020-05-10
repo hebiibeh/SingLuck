@@ -10,11 +10,11 @@ class SingLuckCommonUtil(_context: Context) {
     /*
      ファイル名、パス取得メソッド
     */
-    fun generateDefaultRecFileName(nextSoundId: Long?): String {
+    fun generateDefaultFileName(nextSoundId: Long?): String {
         return Constants.recFileNameDefault + nextSoundId.toString() + Constants.recFileExtension
     }
 
-    fun generateDefaultRecFileNameNoExtension(nextSoundId: Long?): String {
+    fun generateDefaultFileNameNoExtension(nextSoundId: Long?): String {
         return Constants.recFileNameDefault + nextSoundId.toString()
     }
 

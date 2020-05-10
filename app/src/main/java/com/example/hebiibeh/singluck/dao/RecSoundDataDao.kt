@@ -1,35 +1,35 @@
 package com.example.hebiibeh.singluck.dao
 
-import com.example.hebiibeh.singluck.model.RecSoundData
+import com.example.hebiibeh.singluck.model.RecSoundInfoData
 import io.realm.Realm
 import io.realm.kotlin.where
 
 class RecSoundDataDao {
     private val realm = Realm.getDefaultInstance()
 
-    fun findAll(): MutableList<RecSoundData> {
-        val results = realm.where<RecSoundData>().findAll()
+    fun findAll(): MutableList<RecSoundInfoData> {
+        val results = realm.where<RecSoundInfoData>().findAll()
         return results.toMutableList()
     }
 
-    fun findBySoundId(soundId: Long): RecSoundData? {
-        val result = realm.where<RecSoundData>().equalTo("soundId", soundId).findFirst()
+    fun findBySoundId(soundId: Long): RecSoundInfoData? {
+        val result = realm.where<RecSoundInfoData>().equalTo("soundId", soundId).findFirst()
         return result
     }
 
-    fun updateBySoundId(newData: RecSoundData) {
+    fun updateBySoundId(newInfoData: RecSoundInfoData) {
         realm.executeTransaction {
             var oldData =
-                realm.where<RecSoundData>().equalTo("soundId", newData.soundId).findFirst()
+                realm.where<RecSoundInfoData>().equalTo("soundId", newInfoData.soundId).findFirst()
             // TODO:この方法で更新できるか？？？
-            oldData = newData
+            oldData = newInfoData
         }
     }
 
     fun deleteBySoundId(soundId: Long) {
         realm.executeTransaction {
             var soundData =
-                realm.where<RecSoundData>().equalTo("soundId", soundId).findFirst()
+                realm.where<RecSoundInfoData>().equalTo("soundId", soundId).findFirst()
             soundData?.deleteFromRealm()
         }
     }

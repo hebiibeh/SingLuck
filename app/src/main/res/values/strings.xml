@@ -3,19 +3,19 @@
     <string name="top_tile">Sing Luck!</string>
     <string name="go_rec_sound_btn">Sing</string>
     <string name="go_search_sound_btn">Song</string>
-    <string name="search_sound_title">Song!</string>
+    <string name="search_sound_title">SearchSound!</string>
     <string name="rec_sound_title">Sing!</string>
     <string name="go_top_menu_btn">Top</string>
     <string name="go_record_sound_btn">sing</string>
-    <string name="goPlay_sound_list_btn">GoPlayList</string>
+    <string name="goPlay_sound_list_btn">Search</string>
     <string name="rec_sound_btn">record</string>
     <string name="rec_stop_btn">stop</string>
     <string name="save_confirm">保存しますか？</string>
     <string name="positive_save_btn">OK</string>
     <string name="negative_save_btn">Cancel</string>
     <string name="search_sound_btn">search!</string>
-    <string name="input_create_date_txt">録音した日付</string>
-    <string name="play_sound_list_btn">playList</string>
+    <string name="input_create_date_txt">record date(yyyyMMdd)</string>
+    <string name="play_sound_list_btn">playSound</string>
     <string name="play_btn">play</string>
     <string name="stop_btn">stop</string>
 </resources>

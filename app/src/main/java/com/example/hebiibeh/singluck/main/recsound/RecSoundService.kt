@@ -4,33 +4,30 @@ import android.app.Service
 import android.content.Intent
 import android.media.MediaRecorder
 import android.os.IBinder
-import android.util.Log
 import com.example.hebiibeh.singluck.common.SingLuckCommonUtil
-import com.example.hebiibeh.singluck.model.RecSoundData
+import com.example.hebiibeh.singluck.model.RecSoundInfoData
 import io.realm.Realm
 import io.realm.kotlin.createObject
-import java.io.IOException
 import java.util.*
 
 class RecSoundService : Service() {
 
     private var mediaRecorder: MediaRecorder? = null
-    private lateinit var realm: Realm
-    private val utils =
-        SingLuckCommonUtil(this)
+    private var realm = Realm.getDefaultInstance()
+    private val util = SingLuckCommonUtil(this)
 
     override fun onCreate() {
         super.onCreate()
-
-        realm = Realm.getDefaultInstance()
     }
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
 
-        // nextSoundIdがnullになることはないため、第２引数のデフォルト値"0"に意味はない
-        val nextSoundId = intent?.getLongExtra("nextSoundId", 0)
+        val nextSoundId = intent?.getLongExtra("nextSoundId", 0) ?: 1L
+
+        //　録音開始
         startRecording(nextSoundId)
-        registerRecordSoundData(nextSoundId)
+        // 再生開始時に録音情報をDBに登録
+        registRecSoundInfo(nextSoundId)
 
         return super.onStartCommand(intent, flags, startId)
     }
@@ -45,30 +42,27 @@ class RecSoundService : Service() {
         return null
     }
 
-    private fun startRecording(nextSoundId: Long?) {
+    private fun startRecording(nextSoundId: Long) {
         mediaRecorder = MediaRecorder().apply {
             setAudioSource(MediaRecorder.AudioSource.MIC)
             setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP)
-            setOutputFile(utils.generateDefaultRecFilePath(nextSoundId))
+            setOutputFile(util.generateDefaultRecFilePath(nextSoundId))
             setAudioEncoder(MediaRecorder.AudioEncoder.AMR_NB)
 
-            try {
-                prepare()
-            } catch (e: IOException) {
-                Log.e("RecSoundService", "prepare() failed")
-            }
+            prepare()
             start()
         }
     }
 
-    private fun registerRecordSoundData(nextSoundId: Long?) {
+    private fun registRecSoundInfo(nextSoundId: Long?) {
         realm.executeTransaction {
-            val recordSoundData = realm.createObject<RecSoundData>(nextSoundId)
-            recordSoundData.fileName = utils.generateDefaultRecFileName(nextSoundId)
-            recordSoundData.fileNameNoExtension =
-                utils.generateDefaultRecFileNameNoExtension(nextSoundId)
-            recordSoundData.createDate = Date()
-            recordSoundData.updateDate = Date()
+            val recSoundInfoData = realm.createObject<RecSoundInfoData>(nextSoundId)
+
+            recSoundInfoData.fileName = util.generateDefaultFileName(nextSoundId)
+            recSoundInfoData.fileNameNoExtension =
+                util.generateDefaultFileNameNoExtension(nextSoundId)
+            recSoundInfoData.createDate = Date()
+            recSoundInfoData.updateDate = Date()
         }
     }
 

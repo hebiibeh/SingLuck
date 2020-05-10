@@ -43,16 +43,16 @@ class CheckPermission(_activity: Activity, _permissionList: List<String>) {
     // TODO:許可を求め、拒否されたいた場合にさらにもう一度拒否（今後ダイアログを表示しない）するとアプリが起動できなくなる→再インストールしてください
     private fun requestLocationPermission(targetPermission: String): String {
 
-        if (!ActivityCompat.shouldShowRequestPermissionRationale(
+        return if (!ActivityCompat.shouldShowRequestPermissionRationale(
                 activity,
                 targetPermission
             )
         ) {
             // まだ許可を求めていない
-            return targetPermission
+            targetPermission
         } else {
             // 許可を求め、拒否されていた場合
-            return targetPermission
+            targetPermission
         }
     }
 }
