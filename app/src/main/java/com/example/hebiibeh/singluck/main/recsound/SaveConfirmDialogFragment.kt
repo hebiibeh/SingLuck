@@ -24,7 +24,6 @@ class SaveConfirmDialogFragment : DialogFragment() {
         util =
             SingLuckCommonUtil(this.requireContext())
         targetSoundId = arguments?.getLong("nextSoundId")
-
         val builder = AlertDialog.Builder(activity)
         val inputFileNameEdTxt = EditText(this.context)// TODO:ファイル名入力時の入力制限、入力チェックが必要
         initView(builder, inputFileNameEdTxt)

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.hebiibeh.singluck">
+          package="com.example.hebiibeh.singluck">
 
-    <uses-permission android:name="android.permission.RECORD_AUDIO" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
 
     <application
         android:name=".common.CustomApplication"
@@ -13,24 +13,26 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".main.playsoundlist.PlaySoundListActivity"></activity>
+        <activity android:name=".main.MeasurePitchActivity">
+        </activity>
+        <activity android:name=".main.playsoundlist.PlaySoundListActivity"/>
 
         <service
             android:name=".main.recsound.RecSoundService"
             android:enabled="true"
-            android:exported="true" />
+            android:exported="true"/>
         <service
             android:name=".main.playsoundlist.PlaySoundListService"
             android:enabled="true"
-            android:exported="true" />
+            android:exported="true"/>
 
-        <activity android:name=".main.searchsound.SearchSoundActivity" />
-        <activity android:name=".main.recsound.RecSoundActivity" />
+        <activity android:name=".main.searchsound.SearchSoundActivity"/>
+        <activity android:name=".main.recsound.RecSoundActivity"/>
         <activity android:name=".main.topmenu.TopMenuActivity">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.MAIN"/>
 
-                <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
     </application>

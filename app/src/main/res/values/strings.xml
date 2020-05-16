@@ -18,4 +18,7 @@
     <string name="play_sound_list_btn">playSound</string>
     <string name="play_btn">play</string>
     <string name="stop_btn">stop</string>
+    <string name="go_measure_pitch_btn">practice</string>
+    <string name="start_measure_btn">start</string>
+    <string name="stop_measure_btn">stop</string>
 </resources>

@@ -21,6 +21,8 @@ allprojects {
     repositories {
         google()
         jcenter()
+        // グラフ描画のため追加
+        maven { url "https://jitpack.io" }
 
     }
 }

@@ -7,6 +7,7 @@ import android.os.Bundle
 import com.example.hebiibeh.singluck.R
 import com.example.hebiibeh.singluck.common.CheckPermission
 import com.example.hebiibeh.singluck.common.Constants
+import com.example.hebiibeh.singluck.main.MeasurePitchActivity
 import com.example.hebiibeh.singluck.main.searchsound.SearchSoundActivity
 import com.example.hebiibeh.singluck.main.recsound.RecSoundActivity
 import kotlinx.android.synthetic.main.activity_top_menu.*
@@ -28,6 +29,10 @@ class TopMenuActivity : AppCompatActivity() {
         }
         goSearchSoundBtn.setOnClickListener {
             val intent = Intent(this, SearchSoundActivity::class.java)
+            startActivity(intent)
+        }
+        goMeasurePitchBtn.setOnClickListener {
+            val intent = Intent(this, MeasurePitchActivity::class.java)
             startActivity(intent)
         }
     }
